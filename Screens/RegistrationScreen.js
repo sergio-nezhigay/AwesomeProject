@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Dimensions,
   View,
   Text,
   StyleSheet,
@@ -12,18 +11,14 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
+
 import AvatarImage from "../assets/avatar1.jpg";
 import { useNavigation } from "@react-navigation/native";
 
-const windowWidth = Dimensions.get("window").width;
-
 const RegistrationScreen = () => {
-  // const navigation = useNavigation();
-  const height = useHeaderHeight();
-  // const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const navigation = useNavigation();
   const handleLoginLinkPress = () => {
-    // navigation.navigate("Login");
+    navigation.navigate("Login");
   };
 
   const [focusedInput, setFocusedInput] = useState(null);
@@ -40,23 +35,13 @@ const RegistrationScreen = () => {
         resizeMode="cover"
       >
         <View style={styles.formContainer}>
-          <View
-            style={{
-              position: "absolute",
-              top: -60,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.avatarWrapper}>
             <Image source={AvatarImage} style={styles.avatar} />
           </View>
           <Text style={styles.title}>Реєстрація</Text>
 
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            enabled
           >
             <TextInput
               style={[
@@ -173,8 +158,13 @@ const styles = StyleSheet.create({
     color: "#1B4371",
     marginBottom: 46,
   },
-  keyboardAvoidingContainer: {
-    flex: 1,
+  avatarWrapper: {
+    position: "absolute",
+    top: -60,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: "center",
   },
 });
 
