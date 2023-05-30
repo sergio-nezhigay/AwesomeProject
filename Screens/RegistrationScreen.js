@@ -35,11 +35,8 @@ const RegistrationScreen = () => {
         resizeMode="cover"
       >
         <View style={styles.formContainer}>
-          <View style={styles.avatarWrapper}>
-            <Image source={AvatarImage} style={styles.avatar} />
-          </View>
+          <Image source={AvatarImage} style={styles.avatar} />
           <Text style={styles.title}>Реєстрація</Text>
-
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
           >
@@ -99,6 +96,10 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 16,
+    transform: [{ translateY: -92 }],
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: -60,
   },
   title: {
     fontSize: 30,
@@ -133,9 +134,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: "white",
-    paddingTop: 92,
     paddingHorizontal: 16,
-    paddingBottom: 32,
+    paddingVertical: 32,
   },
   button: {
     backgroundColor: "#FF6C00",
@@ -157,14 +157,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#1B4371",
     marginBottom: 46,
-  },
-  avatarWrapper: {
-    position: "absolute",
-    top: -60,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems: "center",
   },
 });
 
