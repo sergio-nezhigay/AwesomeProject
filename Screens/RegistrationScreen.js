@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dimensions,
   View,
@@ -12,33 +12,19 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+import { useHeaderHeight } from "@react-navigation/elements";
 import AvatarImage from "../assets/avatar1.jpg";
+import { useNavigation } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 
 const RegistrationScreen = () => {
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => {
-        setKeyboardVisible(true);
-      }
-    );
-
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => {
-        setKeyboardVisible(false);
-      }
-    );
-
-    // return () => {
-    //   keyboardDidShowListener.remove();
-    //   keyboardDidHideListener.remove();
-    // };
-  }, []);
+  // const navigation = useNavigation();
+  const height = useHeaderHeight();
+  // const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const handleLoginLinkPress = () => {
+    // navigation.navigate("Login");
+  };
 
   const [focusedInput, setFocusedInput] = useState(null);
 
@@ -69,8 +55,8 @@ const RegistrationScreen = () => {
           <Text style={styles.title}>Реєстрація</Text>
 
           <KeyboardAvoidingView
-            style={styles.keyboardAvoidingContainer}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
+            enabled
           >
             <TextInput
               style={[
@@ -101,20 +87,16 @@ const RegistrationScreen = () => {
               onFocus={() => handleInputFocus("password")}
               underlineColorAndroid="transparent"
             />
-            {!isKeyboardVisible && (
-              <>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => console.log("Register pressed")}
-                >
-                  <Text style={styles.buttonText}>Зареєстуватися</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.loginLink}>Вже є акаунт? Увійти</Text>
-                </TouchableOpacity>
-              </>
-            )}
           </KeyboardAvoidingView>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => console.log("Register pressed")}
+          >
+            <Text style={styles.buttonText}>Зареєстуватися</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleLoginLinkPress}>
+            <Text style={styles.loginLink}>Вже є акаунт? Увійти</Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </TouchableWithoutFeedback>
@@ -151,17 +133,14 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderRadius: 8,
     fontSize: 16,
-    // textDecorationLine,
-    textDecorationStyle: "double",
-    textDecorationColor: "yellow",
     lineHeight: 19,
     color: "#BDBDBD",
   },
   inputFocused: {
     borderColor: "#FF6C00",
     color: "#212121",
-    textDecorationColor: "yellow",
     backgroundColor: "white",
+    textDecorationLine: "none",
   },
   formContainer: {
     position: "relative",
@@ -195,9 +174,7 @@ const styles = StyleSheet.create({
     marginBottom: 46,
   },
   keyboardAvoidingContainer: {
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
+    flex: 1,
   },
 });
 
