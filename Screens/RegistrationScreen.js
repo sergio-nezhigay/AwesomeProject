@@ -22,6 +22,15 @@ const RegistrationScreen = () => {
   };
 
   const [focusedInput, setFocusedInput] = useState(null);
+  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginPress = () => {
+    console.log("login=", login);
+    console.log("email=", email);
+    console.log("password=", password);
+  };
 
   const handleInputFocus = (inputName) => {
     setFocusedInput(inputName);
@@ -45,7 +54,10 @@ const RegistrationScreen = () => {
                 styles.input,
                 focusedInput === "login" && styles.inputFocused,
               ]}
+              name="login"
+              value={login}
               placeholder="Логін"
+              onChangeText={(text) => setLogin(text)}
               onFocus={() => handleInputFocus("login")}
               underlineColorAndroid="transparent"
               textDecorationLine="none"
@@ -55,6 +67,10 @@ const RegistrationScreen = () => {
                 styles.input,
                 focusedInput === "email" && styles.inputFocused,
               ]}
+              name="email"
+              type="email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
               placeholder="Адреса електронної пошти"
               onFocus={() => handleInputFocus("email")}
               underlineColorAndroid="transparent"
@@ -64,16 +80,16 @@ const RegistrationScreen = () => {
                 styles.input,
                 focusedInput === "password" && styles.inputFocused,
               ]}
+              name="password"
               placeholder="Пароль"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
               secureTextEntry
               onFocus={() => handleInputFocus("password")}
               underlineColorAndroid="transparent"
             />
           </KeyboardAvoidingView>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => console.log("Register pressed")}
-          >
+          <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
             <Text style={styles.buttonText}>Зареєстуватися</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleLoginLinkPress}>

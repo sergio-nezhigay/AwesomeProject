@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TextInput,
   ImageBackground,
-  Image,
   TouchableOpacity,
   KeyboardAvoidingView,
   Keyboard,
@@ -21,6 +20,13 @@ const LoginScreen = () => {
   };
 
   const [focusedInput, setFocusedInput] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginPress = () => {
+    console.log("email=", email);
+    console.log("password=", password);
+  };
 
   const handleInputFocus = (inputName) => {
     setFocusedInput(inputName);
@@ -44,6 +50,10 @@ const LoginScreen = () => {
                 styles.input,
                 focusedInput === "email" && styles.inputFocused,
               ]}
+              name="email"
+              type="email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
               placeholder="Адреса електронної пошти"
               onFocus={() => handleInputFocus("email")}
               underlineColorAndroid="transparent"
@@ -53,16 +63,16 @@ const LoginScreen = () => {
                 styles.input,
                 focusedInput === "password" && styles.inputFocused,
               ]}
+              name="password"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
               placeholder="Пароль"
               secureTextEntry
               onFocus={() => handleInputFocus("password")}
               underlineColorAndroid="transparent"
             />
           </KeyboardAvoidingView>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => console.log("Register pressed")}
-          >
+          <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
             <Text style={styles.buttonText}>Увійти</Text>
           </TouchableOpacity>
           <View style={styles.registerContainer}>
