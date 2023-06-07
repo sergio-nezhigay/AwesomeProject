@@ -12,7 +12,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-import AvatarImage from "../assets/avatar1.jpg";
+import AvatarImage from "../../assets/avatar1.jpg";
 import { useNavigation } from "@react-navigation/native";
 
 const RegistrationScreen = () => {
@@ -39,7 +39,7 @@ const RegistrationScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ImageBackground
-        source={require("../assets/mountains.jpg")}
+        source={require("../../assets/mountains.jpg")}
         style={styles.backgroundImage}
         resizeMode="cover"
       >

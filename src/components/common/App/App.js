@@ -2,15 +2,13 @@ import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
-import RegistrationScreen from "./src/components/screens/RegistrationScreen";
-import LoginScreen from "./src/components/screens/LoginScreen";
-// import LoginScreen from "./Screens/LoginScreen";
-import ProfileScreen from "./src/components/screens/ProfileScreen";
-import HomeScreen from "./src/components/screens/HomeScreen";
-import PostsScreen from "./src/components/screens/PostsScreen";
-import CreatePostsScreen from "./src/components/screens/CreatePostsScreen";
-import CommentsScreen from "./src/components/screens/CommentsScreen";
+import RegistrationScreen from "./Screens/RegistrationScreen";
+import LoginScreen from "./Screens/LoginScreen";
+import ProfileScreen from "./Screens/ProfileScreen";
+import HomeScreen from "./Screens/HomeScreen";
+import PostsScreen from "./Screens/PostsScreen";
+import CreatePostsScreen from "./Screens/CreatePostsScreen";
+import CommentsScreen from "./Screens/CommentsScreen";
 
 const MainStack = createStackNavigator();
 

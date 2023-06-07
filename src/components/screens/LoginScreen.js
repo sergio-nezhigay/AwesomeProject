@@ -35,7 +35,7 @@ const LoginScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ImageBackground
-        source={require("../assets/mountains.jpg")}
+        source={require("../../assets/mountains.jpg")}
         style={styles.backgroundImage}
         resizeMode="cover"
       >
