@@ -1,11 +1,12 @@
 import React from "react";
+import "react-native-gesture-handler";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import RegistrationScreen from "./src/components/screens/RegistrationScreen";
 import LoginScreen from "./src/components/screens/LoginScreen";
-// import LoginScreen from "./Screens/LoginScreen";
+
 import ProfileScreen from "./src/components/screens/ProfileScreen";
 import HomeScreen from "./src/components/screens/HomeScreen";
 import PostsScreen from "./src/components/screens/PostsScreen";
@@ -17,7 +18,22 @@ const MainStack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="ProfileScreen">
+      <MainStack.Navigator initialRouteName="LoginScreen">
+        <MainStack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Registration"
+          component={RegistrationScreen}
+          options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
         <MainStack.Screen
           name="Profile"
           component={ProfileScreen}
@@ -28,25 +44,10 @@ export default function App() {
           component={CommentsScreen}
           options={{ headerShown: false }}
         />
-        <MainStack.Screen
-          name="Registration"
-          component={RegistrationScreen}
-          options={{ headerShown: false }}
-        />
 
         <MainStack.Screen
           name="CreatePosts"
           component={CreatePostsScreen}
-          options={{ headerShown: false }}
-        />
-        <MainStack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <MainStack.Screen
-          name="Home"
-          component={HomeScreen}
           options={{ headerShown: false }}
         />
         <MainStack.Screen

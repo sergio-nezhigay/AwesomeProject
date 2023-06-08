@@ -5,6 +5,6 @@ export const stylesCommon = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: "#212121",
-    // marginBottom: 11,
+    marginBottom: 11,
   },
 });

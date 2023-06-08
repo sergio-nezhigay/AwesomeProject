@@ -9,14 +9,13 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
-import Icon from "react-native-vector-icons/Feather";
-// import { TextStyled } from "../common/TextStyled/TextStyled";
-import { stylesCommon } from "../common/TextStyled/TextStyled";
 
 import AvatarImage from "../../assets/avatar1.jpg";
 import Landscape1 from "../../assets/landscape1.jpg";
 import Landscape2 from "../../assets/landscape2.jpg";
 import Landscape3 from "../../assets/landscape3.jpg";
+import Snippet from "../common/Snippet/Snippet";
+import Footer from "../common/Footer/Footer";
 
 const ProfileScreen = () => {
   return (
@@ -29,35 +28,31 @@ const ProfileScreen = () => {
         >
           <View style={styles.container}>
             <Image source={AvatarImage} style={styles.avatar} />
-            <Text style={styles.title}>Natali Romanova9</Text>
+            <Text style={styles.title}>Natali Romanova</Text>
 
-            <Image source={Landscape1} style={styles.photo} />
-            <Text style={stylesCommon.text}>Ліс</Text>
-            <View style={styles.row}>
-              <View style={styles.row}>
-                <View style={styles.row}>
-                  <Icon name="message-circle" size={24} style={styles.circle} />
-                  <Text>8</Text>
-                </View>
-                <View style={styles.row}>
-                  <Icon name="thumbs-up" size={24} style={styles.circle} />
-                  <Text>153</Text>
-                </View>
-              </View>
-              <View style={styles.row}>
-                <Icon name="map-pin" size={24} style={styles.circle} />
-                <Text>Ukraine</Text>
-              </View>
-            </View>
-
-            <Image source={Landscape2} />
-            <Image source={Landscape3} />
-
-            <View style={styles.wrapper}>
-              <Text style={styles.title}>Natali 666</Text>
-              <Text style={styles.title}>Natali 666</Text>
-            </View>
+            <Snippet
+              photo={Landscape1}
+              title="Ліс"
+              commentsNumber={8}
+              likesNumber={151}
+              place={"Ukraine"}
+            />
+            <Snippet
+              photo={Landscape3}
+              title="Захід на Чорному морі"
+              commentsNumber={3}
+              likesNumber={200}
+              place={"Ukraine"}
+            />
+            <Snippet
+              photo={Landscape2}
+              title="Старий будиночок у Венеції"
+              commentsNumber={50}
+              likesNumber={200}
+              place={"Italy"}
+            />
           </View>
+          <Footer />
         </ImageBackground>
       </TouchableWithoutFeedback>
     </ScrollView>
@@ -93,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    paddingTop: 119,
+    paddingTop: 200,
   },
   avatar: {
     width: 120,
@@ -118,7 +113,7 @@ const styles = StyleSheet.create({
     position: "relative",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    backgroundColor: "yellow",
+    backgroundColor: "white",
     paddingHorizontal: 16,
     fontSize: 16,
     lineHeight: 19,
